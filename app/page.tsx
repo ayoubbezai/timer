@@ -5,7 +5,7 @@ import Image from 'next/image'
 import GDG from './gdg.svg'
 import LeftShape from '../assets/top_left_shape.png'
 import RightShape from '../assets/top_right_shape.png'
-
+import Devfesto from './devfo.png'
 export default function TimerApp() {
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
@@ -386,7 +386,16 @@ export default function TimerApp() {
                     <span className='text-xl sm:text-[2rem] md:text-[2.8rem] lg:text-[3.5rem] font-bold'>
                         DevFest '25 - GDG Batna
                     </span>
+
+                           <Image 
+                        src={Devfesto} 
+                        alt='GDG Logo' 
+                        width={70}
+                        height={78}
+                        className='w-12 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 lg:w-26 lg:h-20'
+                    />
                 </div>
+
 
                 {/* Main Timer Display */}
                 <div className="flex relative z-10 justify-center w-full items-center pt-4 sm:pt-6 md:pt-8 px-4 sm:px-6">
