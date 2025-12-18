@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import GDG from './gdg.png'
 
 export default function TimerApp() {
     const [timeLeft, setTimeLeft] = useState({
@@ -308,7 +309,7 @@ export default function TimerApp() {
     )
 
     return (
-        <div className="min-h-screen bg-background relative font-space-grotesk overflow-x-hidden">
+        <div className="min-h-screen bg-[#F6F2E7] relative font-space-grotesk overflow-x-hidden">
             {/* Vertical Lines - Fixed to show on all components */}
             <div className="absolute inset-0 pointer-events-none hidden 2xl:block">
                 {Array.from({ length: 25 }).map((_, index) => (
