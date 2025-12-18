@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import GDG from './gdg.svg'
 import LeftShape from '../assets/top_left_shape.png'
@@ -30,10 +30,55 @@ export default function TimerApp() {
         date: '',
         time: '12:00'
     })
+    const [isFullscreen, setIsFullscreen] = useState(false)
     
     const timerRef = useRef<NodeJS.Timeout | null>(null)
     const startTimeRef = useRef<number>(0)
     const remainingTimeRef = useRef<number>(0)
+
+    // Fullscreen functionality
+    const toggleFullscreen = useCallback(() => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+            setIsFullscreen(true);
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+                setIsFullscreen(false);
+            }
+        }
+    }, []);
+
+    // Listen for fullscreen changes
+    useEffect(() => {
+        const handleFullscreenChange = () => {
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        
+        return () => {
+            document.removeEventListener('fullscreenchange', handleFullscreenChange);
+        };
+    }, []);
+
+    // Keyboard shortcut for fullscreen (F key)
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            const target = event.target as HTMLElement;
+            if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") return;
+
+            if (event.key.toLowerCase() === "f") {
+                event.preventDefault();
+                toggleFullscreen();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [toggleFullscreen]);
 
     // Initialize with preset options
     const presetTimes = [
@@ -404,6 +449,16 @@ export default function TimerApp() {
                 src={RightShape}
             />
 
+            {/* Fullscreen Mode Notification */}
+            {isFullscreen && (
+                <div className="fixed top-4 right-4 z-50 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-4 py-2 rounded-lg">
+                    <div className="flex items-center gap-2">
+                        <span className="text-sm font-bold text-gray-800">Fullscreen Mode</span>
+                        <span className="text-xs text-gray-600">(Press ESC to exit)</span>
+                    </div>
+                </div>
+            )}
+
             {/* Main Content */}
             <div className='relative z-10'>
                 <div className='min-h-screen flex relative z-10 items-center justify-center flex-col mb-2'>
@@ -422,8 +477,9 @@ export default function TimerApp() {
                         <Image 
                             src={Devfesto} 
                             alt='DevFest Logo' 
-                            width={80}
-                            className=''
+                            width={70}
+                            height={78}
+                            className='w-12 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 lg:w-26 lg:h-20'
                         />
                     </div>
 
@@ -723,6 +779,14 @@ export default function TimerApp() {
                                 isDisabled={!isRunning && totalSeconds <= 0}
                             >
                                 +5 MIN
+                            </ControlButton>
+                            
+                            {/* Fullscreen Button */}
+                            <ControlButton
+                                onClick={toggleFullscreen}
+                                color={isFullscreen ? "bg-gray-800" : "bg-gray-600"}
+                            >
+                                {isFullscreen ? "EXIT FULLSCREEN" : "FULLSCREEN (F)"}
                             </ControlButton>
                         </div>
                     </div>
