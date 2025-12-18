@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import GDG from './gdg.png'
+import GDG from './gdg.svg'
+import LeftShape from '../assets/top_left_shape.png'
+import RightShape from '../assets/top_right_shape.png'
 
 export default function TimerApp() {
     const [timeLeft, setTimeLeft] = useState({
@@ -246,7 +248,7 @@ export default function TimerApp() {
         </div>
     )
 
-    // Control buttons component
+    // Control buttons component with fixed hover
     const ControlButton = ({ 
         onClick, 
         children, 
@@ -263,14 +265,16 @@ export default function TimerApp() {
             className={`
                 ${color} ${hoverColor}
                 text-white font-bold py-3 px-6
-                border-2 border-black
+                border-2 border-black 
                 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
                 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-                hover:translate-x-[1px] hover:translate-y-[1px]
+                hover:translate-x-[2px] hover:translate-y-[2px]
                 active:shadow-none active:translate-x-[4px] active:translate-y-[4px]
-                transition-all duration-200
+                transition-all duration-100
                 min-w-[120px]
                 text-lg
+                relative
+                z-10
             `}
         >
             {children}
@@ -302,6 +306,7 @@ export default function TimerApp() {
                     [appearance:textfield]
                     [&::-webkit-outer-spin-button]:appearance-none
                     [&::-webkit-inner-spin-button]:appearance-none
+                    transition-all duration-100
                 "
             />
             <div className="text-sm font-bold mt-2 text-gray-800">{label}</div>
@@ -351,50 +356,40 @@ export default function TimerApp() {
                 ))}
             </div>
 
+            {/* Background Shapes similar to Hero */}
+            <Image
+                alt='left shape'
+                className='absolute left-0 top-0 w-16 h-auto sm:w-20 md:w-28 lg:w-36 pointer-events-none'
+                src={LeftShape}
+            />
+            
+            <Image
+                alt='right shape'
+                className='absolute right-0 -top-8 w-24 h-auto sm:w-28 md:w-40 lg:w-48 pointer-events-none'
+                src={RightShape}
+            />
+
             {/* Main Content */}
-            <div className="relative z-10">
-                {/* Header Section with Logo and Title */}
-                <div className="text-center mb-8 sm:mb-12 pt-8 sm:pt-12">
-                    {/* GDG Batna Logo - You can add your logo here */}
-                    <div className="mb-6 flex justify-center">
-                        {/* Add your GDG Batna logo here */}
-                        <div className="
-                            bg-white 
-                            border-2 border-black 
-                            shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                            hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]
-                            hover:translate-x-[1px] hover:translate-y-[1px]
-                            transition-all duration-200
-                            w-32 h-32 sm:w-40 sm:h-40
-                            rounded-full
-                            flex items-center justify-center
-                            mx-auto
-                        ">
-                            <div className="text-4xl sm:text-5xl font-black text-gray-900">
-                                GDG
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 mb-4">
-                        GDG BATNA
-                    </h1>
-                    <div className="
-                        bg-white 
-                        border-2 border-black 
-                        shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                        inline-block
-                        px-6 py-3
-                        mt-4
-                    ">
-                        <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-                            DEV FEST 2025
-                        </p>
-                    </div>
+       
+<div className=' relative z-10 '>
+  <div className='min-h-screen  flex relative z-10 items-center justify-center flex-col mb-2  '>
+
+
+                        <div className='flex relative z-10 items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 pointer-events-none'>
+                    <Image 
+                        src={GDG} 
+                        alt='GDG Logo' 
+                        width={60}
+                        height={58}
+                        className='w-12 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 lg:w-24 lg:h-18'
+                    />
+                    <span className='text-xl sm:text-[2rem] md:text-[2.8rem] lg:text-[3.5rem] font-bold'>
+                        DevFest '25 - GDG Batna
+                    </span>
                 </div>
 
                 {/* Main Timer Display */}
-                <div className="flex justify-center w-full items-center pt-6 sm:pt-8 md:pt-12 lg:pt-16 px-4 sm:px-6">
+                <div className="flex relative z-10 justify-center w-full items-center pt-4 sm:pt-6 md:pt-8 px-4 sm:px-6">
                     <div className="
                         bg-white 
                         border-2 border-black 
@@ -402,7 +397,7 @@ export default function TimerApp() {
                         hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] md:hover:shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]
                         hover:translate-x-[1px] hover:translate-y-[1px]
                         active:shadow-none active:translate-x-[4px] active:translate-y-[4px]
-                        transition-all duration-200
+                        transition-all duration-100
                         w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl
                         mx-auto
                         py-6 sm:py-8 md:py-10 lg:py-12
@@ -464,12 +459,14 @@ export default function TimerApp() {
                         </div>
                     </div>
                 </div>
+                  </div>
+
 
                 {/* Controls Section */}
-                <div className="mt-12 space-y-8 px-4 sm:px-6 max-w-6xl mx-auto">
+                <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8 px-4 sm:px-6 max-w-6xl mx-auto">
                     {/* Preset Times */}
                     <div className="bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6">
-                        <h2 className="text-2xl font-black text-gray-900 mb-4">QUICK SET</h2>
+                        <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-4">QUICK SET</h2>
                         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
                             {presetTimes.map((preset, index) => (
                                 <button
@@ -480,11 +477,12 @@ export default function TimerApp() {
                                         border-2 border-black
                                         shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
                                         hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-                                        hover:translate-x-[1px] hover:translate-y-[1px]
+                                        hover:translate-x-[2px] hover:translate-y-[2px]
                                         active:shadow-none active:translate-x-[4px] active:translate-y-[4px]
-                                        transition-all duration-200
+                                        transition-all duration-100
                                         py-3 px-4
                                         font-bold
+                                        text-sm sm:text-base
                                     "
                                 >
                                     {preset.label}
@@ -496,8 +494,8 @@ export default function TimerApp() {
                     {/* Custom Time Input */}
                     {showInput && (
                         <div className="bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6">
-                            <h2 className="text-2xl font-black text-gray-900 mb-6">CUSTOM TIMER</h2>
-                            <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap">
+                            <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-6">CUSTOM TIMER</h2>
+                            <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 flex-wrap">
                                 <TimeInput
                                     label="DAYS"
                                     value={customTime.days}
@@ -523,7 +521,7 @@ export default function TimerApp() {
                                     max={59}
                                 />
                             </div>
-                            <div className="flex justify-center mt-8">
+                            <div className="flex justify-center mt-6 sm:mt-8">
                                 <ControlButton
                                     onClick={setCustomTimer}
                                     color="bg-green-600"
@@ -537,7 +535,7 @@ export default function TimerApp() {
 
                     {/* Control Buttons */}
                     <div className="bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6">
-                        <div className="flex flex-wrap justify-center gap-4">
+                        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                             {!isRunning ? (
                                 <ControlButton
                                     onClick={startTimer}
@@ -591,9 +589,9 @@ export default function TimerApp() {
                     </div>
 
                     {/* Status Display */}
-                    <div className="text-center pb-12">
+                    <div className="text-center pb-8 sm:pb-12">
                         <div className="inline-block bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-6 py-3">
-                            <div className="text-lg font-bold">
+                            <div className="text-base sm:text-lg font-bold">
                                 {isRunning ? (
                                     isPaused ? (
                                         <span className="text-yellow-600">⏸️ PAUSED</span>
@@ -610,6 +608,7 @@ export default function TimerApp() {
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+
     )
 }

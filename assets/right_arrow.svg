@@ -1,0 +1,48 @@
+<svg width="156" height="100" viewBox="0 0 156 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_n_407_1508)">
+<g filter="url(#filter1_dd_407_1508)">
+<path d="M149.107 42.7056L108.177 1.80278C107.531 1.15681 106.481 1.15681 105.835 1.80278L89.4178 18.2201C88.7719 18.8661 88.7719 19.9164 89.4178 20.5623L101.23 32.3744H5.31836V58.9032H101.243L89.2025 70.9438C88.5565 71.5898 88.5565 72.64 89.2025 73.286L106.402 89.7034C107.048 90.3494 108.098 90.3494 108.744 89.7034L149.098 48.5765C149.304 48.3699 149.48 48.1502 149.634 47.9173C150.697 46.309 150.522 44.125 149.107 42.71V42.7056Z" fill="#F4C152"/>
+<path d="M149.107 42.7056L108.177 1.80278C107.531 1.15681 106.481 1.15681 105.835 1.80278L89.4178 18.2201C88.7719 18.8661 88.7719 19.9164 89.4178 20.5623L101.23 32.3744H5.31836V58.9032H101.243L89.2025 70.9438C88.5565 71.5898 88.5565 72.64 89.2025 73.286L106.402 89.7034C107.048 90.3494 108.098 90.3494 108.744 89.7034L149.098 48.5765C149.304 48.3699 149.48 48.1502 149.634 47.9173C150.697 46.309 150.522 44.125 149.107 42.71V42.7056Z" stroke="#1E1E1E" stroke-width="2.63662" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_n_407_1508" x="4" y="0" width="147.637" height="91.5062" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="2.2756383419036865 2.2756383419036865" stitchTiles="stitch" numOctaves="3" result="noise" seed="6205" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise2">
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise2" result="noise2Clipped" />
+<feFlood flood-color="rgba(30, 30, 30, 0.35)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feFlood flood-color="rgba(30, 30, 30, 0.35)" result="color2Flood" />
+<feComposite operator="in" in2="noise2Clipped" in="color2Flood" result="color2" />
+<feMerge result="effect1_noise_407_1508">
+<feMergeNode in="shape" />
+<feMergeNode in="color1" />
+<feMergeNode in="color2" />
+</feMerge>
+</filter>
+<filter id="filter1_dd_407_1508" x="2.38419e-07" y="0" width="155.637" height="99.5062" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="2.63662" dy="2.63662"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.117647 0 0 0 0 0.117647 0 0 0 0 0.117647 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_407_1508"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_407_1508" result="effect2_dropShadow_407_1508"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_407_1508" result="shape"/>
+</filter>
+</defs>
+</svg>
