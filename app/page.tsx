@@ -422,9 +422,8 @@ export default function TimerApp() {
                         <Image 
                             src={Devfesto} 
                             alt='DevFest Logo' 
-                            width={70}
-                            height={78}
-                            className='w-12 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 lg:w-26 lg:h-20'
+                            width={80}
+                            className=''
                         />
                     </div>
 
